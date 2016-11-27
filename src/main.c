@@ -102,5 +102,31 @@ int main(void)
 		  sleep(val);
 
 	  }
+
+	  for(int i = 39; i>0; i--) {
+
+	  		  val = 3000000/i;
+
+	  		  GPIO_SetBits(GPIOD,GPIO_Pin_12);
+	  		  sleep(val);
+	  		  GPIO_ResetBits(GPIOD,GPIO_Pin_12);
+	  		  sleep(val);
+
+	  		  GPIO_SetBits(GPIOD,GPIO_Pin_13);
+	  		  sleep(val);
+	  		  GPIO_ResetBits(GPIOD,GPIO_Pin_13);
+	  		  sleep(val);
+
+	  		  GPIO_SetBits(GPIOD,GPIO_Pin_14);
+	  		  sleep(val);
+	  		  GPIO_ResetBits(GPIOD,GPIO_Pin_14);
+	  		  sleep(val);
+
+	  		  GPIO_SetBits(GPIOD,GPIO_Pin_15);
+	  		  sleep(val);
+	  		  GPIO_ResetBits(GPIOD,GPIO_Pin_15);
+	  		  sleep(val);
+
+	  }
   }
 }
