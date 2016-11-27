@@ -41,9 +41,23 @@ SOFTWARE.
 **
 **===========================================================================
 */
+
+void sleep(int val){
+	for(uint32_t i=0;i<val;i++){
+	}
+}
+
 int main(void)
 {
-  int i = 0;
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD,ENABLE);
+
+  GPIO_InitTypeDef initStruct;
+  initStruct.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+  initStruct.GPIO_Mode = GPIO_Mode_OUT;
+  initStruct.GPIO_OType = GPIO_OType_PP;
+  initStruct.GPIO_PuPd = GPIO_PuPd_UP;
+  initStruct.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOD,&initStruct);
 
   /**
   *  IMPORTANT NOTE!
@@ -58,8 +72,35 @@ int main(void)
   /* TODO - Add your application code here */
 
   /* Infinite loop */
+
+  int val = 0;
+
   while (1)
   {
-	i++;
+	  for(int i = 1; i<40; i++) {
+
+		  val = 3000000/i;
+
+		  GPIO_SetBits(GPIOD,GPIO_Pin_12);
+		  sleep(val);
+		  GPIO_ResetBits(GPIOD,GPIO_Pin_12);
+		  sleep(val);
+
+		  GPIO_SetBits(GPIOD,GPIO_Pin_13);
+		  sleep(val);
+		  GPIO_ResetBits(GPIOD,GPIO_Pin_13);
+		  sleep(val);
+
+		  GPIO_SetBits(GPIOD,GPIO_Pin_14);
+		  sleep(val);
+		  GPIO_ResetBits(GPIOD,GPIO_Pin_14);
+		  sleep(val);
+
+		  GPIO_SetBits(GPIOD,GPIO_Pin_15);
+		  sleep(val);
+		  GPIO_ResetBits(GPIOD,GPIO_Pin_15);
+		  sleep(val);
+
+	  }
   }
 }
